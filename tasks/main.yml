@@ -10,6 +10,14 @@
   apt: name={{ item }} update_cache={{ update_pkg_cache }} state=installed
   with_items:
     - python-setuptools
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  tags: packages
+
+- name: Assure required packages installed
+  yum: name={{ item }} update_cache={{ update_pkg_cache }} state=installed
+  with_items:
+    - python-setuptools
+  when: ansible_distribution == 'NA'
   tags: packages
 
 - name: Assure pip installed via easy_install.

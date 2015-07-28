@@ -13,11 +13,16 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   tags: packages
 
-- name: Assure required packages installed
+- name: Assure required packages installed on photon
   yum: name={{ item }} update_cache={{ update_pkg_cache }} state=installed
   with_items:
     - python-setuptools
-  when: ansible_distribution == 'NA'
+  when: ansible_lsb.codename == 'Photon'
+  tags: packages
+
+- name: make link to python
+  file: src=/usr/bin/python dest=/bin/python state=link
+  when: ansible_lsb.codename == 'Photon'
   tags: packages
 
 - name: Assure pip installed via easy_install.

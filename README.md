@@ -20,7 +20,7 @@ Whether to update the aptitude, yum, pacman or other package cache before runnin
 
 ```
 ---
-- hosts: supervio
+- hosts: piphosts
   sudo: True
   connection: local
   roles:

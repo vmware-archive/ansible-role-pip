@@ -37,8 +37,16 @@
 
 - name: Assure pip installed via easy_install.
   command: easy_install pip
+  when: ansible_lsb.codename != 'Photon'
   args:
     creates: /usr/local/bin/pip
+
+- name: Assure pip installed via easy_install on Photon.
+  command: easy_install pip
+  when: ansible_lsb.codename == 'Photon'
+  args:
+    creates: /usr/bin/pip
+
 
 - name: Upgrade Virtualenv
   pip: name=virtualenv state=latest

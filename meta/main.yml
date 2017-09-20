@@ -1,5 +1,5 @@
 # Copyright © 2017 VMware, Inc. All Rights Reserved.
-
+---
 galaxy_info:
   description: Install pip
   company: VMware
@@ -8,23 +8,23 @@ galaxy_info:
   issue_tracker_url: https://github.com/vmware/ansible-role-pip/issues
 
   platforms:
-  - name: Fedora
-    versions:
-    - 24
+    - name: Fedora
+      versions:
+        - 24
 
-  - name: Centos
-    version:
-    - 7
+    - name: Centos
+      version:
+        - 7
 
-  - name: Photon
-    version:
-    - 1.0
+    - name: Photon
+      version:
+        - 1.0
 
-  - name: Ubuntu
-    versions:
-    - trusty
-    - precise
-    - xenial
+    - name: Ubuntu
+      versions:
+        - trusty
+        - precise
+        - xenial
 
   galaxy_tags:
     - vmware

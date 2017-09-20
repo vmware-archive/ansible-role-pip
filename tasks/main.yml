@@ -27,13 +27,26 @@
   with_items:
     - python-pip
 
-- name: Assure required packages installed
+- name: Assure required packages installed (not Photon)
   package:
     name: "{{ item }}"
     state: present
   with_items:
     - ca-certificates
     - python-setuptools
+  when: ansible_distribution != 'VMware Photon'
+
+- name: Assure required packages installed (Photon)
+  shell: "tdnf install -y {{ item }}"
+  with_items:
+    - ca-certificates
+    - python-setuptools
+  register: result
+  changed_when: "'Nothing to do' not in result.stdout"
+  when: ansible_distribution == 'VMware Photon'
+  tags:
+    - skip_ansible_lint
+
 
 - name: Assure pip installed via easy_install.
   command: easy_install pip

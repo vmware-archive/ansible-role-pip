@@ -6,10 +6,9 @@ cache: pip
 services:
   - docker
 install:
-  - pip install molecule
-  - pip install docker
+  - pip install docker-py molecule
 script:
-  - molecule test -s travis
+  - molecule --debug test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

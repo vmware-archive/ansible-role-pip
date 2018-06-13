@@ -11,6 +11,7 @@ platforms:
     privileged: true
     volume_mounts:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    command: sleep 100m
 
   - name: centos-7
     image: centos:7
